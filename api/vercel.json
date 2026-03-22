@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "name": "anime-extension-api",
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/health",
+      "dest": "/api/health.js"
+    },
+    {
+      "src": "/animekai/search",
+      "dest": "/api/animekai/search.js"
+    },
+    {
+      "src": "/animekai/info",
+      "dest": "/api/animekai/info.js"
+    },
+    {
+      "src": "/animekai/episodes",
+      "dest": "/api/animekai/episodes.js"
+    },
+    {
+      "src": "/animekai/stream",
+      "dest": "/api/animekai/stream.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+}
